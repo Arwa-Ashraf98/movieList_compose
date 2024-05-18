@@ -1,7 +1,9 @@
 package com.mad43.moviesapp.data.mapper
 
-import com.mad43.moviesapp.data.models.dto.MovieDto
+import com.mad43.moviesapp.data.models.response.MovieDto
 import com.mad43.moviesapp.data.models.entity.MovieEntity
+import com.mad43.moviesapp.data.models.response.MovieResponse
+import com.mad43.moviesapp.domain.models.DetailedMovie
 import com.mad43.moviesapp.domain.models.Movie
 
 
@@ -15,7 +17,7 @@ fun MovieDto.toMovieEntity(): MovieEntity {
         releaseDate = release_date ?: "",
         title = title ?: "",
         page = page ,
-        voteCount = vote_count ?: 0.0
+        voteCount = vote_average ?: 0.0
     )
 }
 
@@ -26,5 +28,16 @@ fun MovieEntity.toMovie(): Movie {
         posterImage = this.posterPath,
         title = this.title ,
         vote = this.voteCount
+    )
+}
+
+fun MovieResponse.toDetailedMovie() : DetailedMovie {
+    return DetailedMovie(
+        title = this.title,
+        overView = this.overview ,
+        imageUrl = this.poster_path ,
+        releaseDate = this.release_date ,
+        voteCount = this.vote_average ,
+        genre = this.genres.joinToString(", ")
     )
 }

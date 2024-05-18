@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movies App</string>
+    <string name="not_popular">Not Popular</string>
+    <string name="popular">Popular</string>
+    <string name="known">Known</string>
+    <string name="very_popular">very Popular</string>
 </resources>

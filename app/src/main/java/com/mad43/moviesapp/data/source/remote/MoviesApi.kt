@@ -1,7 +1,7 @@
 package com.mad43.moviesapp.data.source.remote
 
-import com.mad43.moviesapp.data.models.dto.MovieResponse
-import com.mad43.moviesapp.data.models.dto.MoviesResponse
+import com.mad43.moviesapp.data.models.response.MovieResponse
+import com.mad43.moviesapp.data.models.response.MoviesResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

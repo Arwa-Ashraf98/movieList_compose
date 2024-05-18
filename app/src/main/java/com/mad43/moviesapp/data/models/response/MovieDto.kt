@@ -1,7 +1,4 @@
-package com.mad43.moviesapp.data.models.dto
-
-import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+package com.mad43.moviesapp.data.models.response
 
 data class MovieDto (
     val adult: Boolean?,
