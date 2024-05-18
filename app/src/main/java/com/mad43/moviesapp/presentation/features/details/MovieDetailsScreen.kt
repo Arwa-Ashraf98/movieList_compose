@@ -1,6 +1,5 @@
 package com.mad43.moviesapp.presentation.features.details
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.mad43.moviesapp.R
 import com.mad43.moviesapp.presentation.common.ClickableImage
 import com.mad43.moviesapp.presentation.common.HorizontalSpacer
@@ -36,7 +36,7 @@ import com.mad43.moviesapp.presentation.common.VerticalSpacer
 import com.mad43.moviesapp.utlis.RatingBar
 
 @Composable
-fun MovieDetailsScreen(id: Int?) {
+fun MovieDetailsScreen(id: Int? ,navController: NavController) {
     val detailsViewModel = hiltViewModel<MovieDetailsViewModel>()
     val detailsState = detailsViewModel.detailsState.collectAsState().value
 
@@ -47,7 +47,7 @@ fun MovieDetailsScreen(id: Int?) {
 
     if (detailsState.isLoading) {
         ProgressBar(
-            boxModifier = Modifier
+            modifier = Modifier
                 .padding(16.dp)
                 .fillMaxSize(),
             isDisplayed = true
@@ -66,7 +66,7 @@ fun MovieDetailsScreen(id: Int?) {
                     .height(30.dp)
                     .width(30.dp)
             ) {
-
+                navController.popBackStack()
             }
             MovieAsyncImage(
                 modifier = Modifier
@@ -152,7 +152,6 @@ fun MovieDetailsScreen(id: Int?) {
                 fontSize = 14.sp,
                 text = detailsState.movie?.overView ?: ""
             )
-
         }
     }
 }

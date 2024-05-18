@@ -1,8 +1,6 @@
 package com.mad43.moviesapp.presentation.common
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,12 +10,12 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun ProgressBar(
-    boxModifier: Modifier = Modifier,
+    modifier: Modifier = Modifier,
     isDisplayed: Boolean = false,
 ) {
     if (isDisplayed) {
         Box(
-            modifier = boxModifier ,
+            modifier = modifier ,
         ) {
             CircularProgressIndicator(
                 color = Color.Blue,

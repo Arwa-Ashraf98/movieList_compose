@@ -28,7 +28,7 @@ fun Navigation() {
                     nullable = false
                 })
         ) { entry ->
-            MovieDetailsScreen(id = entry.arguments?.getInt("id"))
+            MovieDetailsScreen(id = entry.arguments?.getInt("id"), navController = navController)
         }
     }
 }
