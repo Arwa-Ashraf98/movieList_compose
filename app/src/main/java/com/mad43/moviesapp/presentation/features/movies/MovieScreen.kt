@@ -1,6 +1,7 @@
 package com.mad43.moviesapp.presentation.features.movies
 
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,22 +15,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import com.mad43.moviesapp.presentation.Screen
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
 import com.mad43.moviesapp.presentation.viewmodel.MoviesViewModel
 
 @Composable
-fun DisplayedMovie(modifier: Modifier) {
-    val moviesViewModel : MoviesViewModel = hiltViewModel()
+fun DisplayedMovieScreen(navController: NavController) {
+    val moviesViewModel: MoviesViewModel = hiltViewModel()
     val movies = moviesViewModel.moviesPagingFlow.collectAsLazyPagingItems()
-    MovieScreen(movies = movies)
+    MovieScreen(movies = movies, navController)
 }
 
 @Composable
-fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>) {
+fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>, navController: NavController) {
     val context = LocalContext.current
     LaunchedEffect(key1 = movies.loadState) {
         if (movies.loadState.refresh is LoadState.Error) {
@@ -47,9 +50,19 @@ fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>) {
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
-            LazyColumn(modifier = Modifier.fillMaxSize() , contentPadding = PaddingValues(16.dp)) {
-                items(movies){
-                    MovieItem(movie = it ?: DisplayedMovie() , modifier = Modifier.padding(16.dp) )
+            LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
+                items(movies) { displayedMovie ->
+                    MovieItem(
+                        movie = displayedMovie ?: DisplayedMovie(),
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .clickable {
+                                navController.navigate(
+                                    Screen.MovieDetailsScreen.withArgs(
+                                        displayedMovie?.movieId.toString()
+                                    )
+                                )
+                            })
                 }
             }
         }

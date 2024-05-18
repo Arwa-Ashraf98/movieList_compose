@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.mad43.moviesapp.presentation.features.movies.DisplayedMovie
+import com.mad43.moviesapp.presentation.Navigation
 import com.mad43.moviesapp.ui.theme.MoviesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,8 +19,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MoviesAppTheme {
-                Scaffold( modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    DisplayedMovie(modifier = Modifier.padding(innerPadding))
+                Scaffold( modifier = Modifier.fillMaxSize()) {
+                    Navigation()
                 }
             }
         }

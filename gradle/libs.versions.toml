@@ -27,6 +27,10 @@ composelifecycle = "2.4.1"
 material3Android = "1.2.1"
 extendedIcon = "1.5.4"
 systemUiController = "0.27.0"
+navVersion ="2.7.7"
+
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -98,6 +102,8 @@ exteendedIcon = {module = "androidx.compose.material:material-icons-extended" , 
 # system ui controller
 systemUiController = {module = "com.google.accompanist:accompanist-systemuicontroller" , version.ref = "systemUiController"}
 
+# navigation
+navication-compose = {module = "androidx.navigation:navigation-compose" , version.ref ="navVersion"}
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
