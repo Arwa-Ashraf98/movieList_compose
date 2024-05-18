@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.common
+package com.mad43.moviesapp.common.components
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -13,7 +13,7 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import coil.size.Size
 import com.mad43.moviesapp.R
-import com.mad43.moviesapp.utlis.Constants
+import com.mad43.moviesapp.common.utlis.Constants
 import kotlinx.coroutines.Dispatchers
 
 

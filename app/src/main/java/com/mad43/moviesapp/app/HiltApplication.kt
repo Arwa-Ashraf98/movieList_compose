@@ -1,12 +1,12 @@
-package com.mad43.moviesapp
+package com.mad43.moviesapp.app
 
 import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
-import com.mad43.moviesapp.utlis.NetworkChecker
-import com.mad43.moviesapp.utlis.NetworkConnectivityObserver
+import com.mad43.moviesapp.common.utlis.NetworkChecker
+import com.mad43.moviesapp.common.utlis.NetworkConnectivityObserver
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

@@ -3,7 +3,7 @@ package com.mad43.moviesapp.data.models.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mad43.moviesapp.utlis.Constants
+import com.mad43.moviesapp.common.utlis.Constants
 
 
 @Entity(tableName = Constants.MOVIE_TABLE)

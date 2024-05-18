@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.features.movies
+package com.mad43.moviesapp.presentation.features.movies.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,24 +17,32 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.mad43.moviesapp.R
-import com.mad43.moviesapp.presentation.Screen
-import com.mad43.moviesapp.presentation.common.ProgressBar
-import com.mad43.moviesapp.presentation.common.showToast
+import com.mad43.moviesapp.app.navigation.Screen
+import com.mad43.moviesapp.common.components.ProgressBar
+import com.mad43.moviesapp.common.components.showToast
+import com.mad43.moviesapp.presentation.features.movies.viewmodel.MoviesViewModel
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
 
 @Composable
-fun DisplayedMovieScreen(navController: NavController , isNetworkConnected: Boolean) {
+fun DisplayedMovieScreen(navController: NavController, isNetworkConnected: Boolean) {
     val moviesViewModel: MoviesViewModel = hiltViewModel()
     val movies = moviesViewModel.moviesPagingFlow.collectAsLazyPagingItems()
-    MovieScreen(movies = movies, navController , isNetworkConnected = isNetworkConnected)
+    MovieScreen(movies = movies, navController, isNetworkConnected = isNetworkConnected)
 }
 
 @Composable
-fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>, navController: NavController , isNetworkConnected : Boolean) {
+fun MovieScreen(
+    movies: LazyPagingItems<DisplayedMovie>,
+    navController: NavController,
+    isNetworkConnected: Boolean
+) {
     val context = LocalContext.current
     LaunchedEffect(key1 = movies.loadState) {
         if (movies.loadState.refresh is LoadState.Error) {
-            showToast(context = context, message = "Error: " + (movies.loadState.refresh as LoadState.Error).error.message)
+            showToast(
+                context = context,
+                message = context.getString(R.string.error) + (movies.loadState.refresh as LoadState.Error).error.message
+            )
         }
     }
 
@@ -48,20 +56,21 @@ fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>, navController: NavContr
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
                 items(movies) { displayedMovie ->
-                    MovieItem(
-                        movie = displayedMovie ?: DisplayedMovie(),
-                        action = {
-                            if (isNetworkConnected){
-                                navController.navigate(
-                                    Screen.MovieDetailsScreen.withArgs(
-                                        displayedMovie?.movieId.toString()
-                                    )
+                    MovieItem(movie = displayedMovie ?: DisplayedMovie(), action = { movieId ->
+                        if (isNetworkConnected) {
+                            navController.navigate(
+                                Screen.MovieDetailsScreen.withArgs(
+                                    movieId.toString()
                                 )
-                            } else {
-                                showToast(context = context , message = context.getString(R.string.error_connect_to_network))
-                            }
+                            )
+                        } else {
+                            showToast(
+                                context = context,
+                                message = context.getString(R.string.error_connect_to_network)
+                            )
+                        }
 
-                        })
+                    })
                 }
             }
         }

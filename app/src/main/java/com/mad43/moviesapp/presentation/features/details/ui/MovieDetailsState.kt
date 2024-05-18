@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.features.details
+package com.mad43.moviesapp.presentation.features.details.ui
 
 import com.mad43.moviesapp.domain.models.DetailedMovie
 

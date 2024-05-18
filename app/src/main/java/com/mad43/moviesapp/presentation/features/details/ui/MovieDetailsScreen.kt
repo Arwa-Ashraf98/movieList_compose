@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.features.details
+package com.mad43.moviesapp.presentation.features.details.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -26,14 +26,15 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mad43.moviesapp.R
-import com.mad43.moviesapp.presentation.common.ClickableImage
-import com.mad43.moviesapp.presentation.common.HorizontalSpacer
-import com.mad43.moviesapp.presentation.common.MovieAsyncImage
-import com.mad43.moviesapp.presentation.common.MultiLineText
-import com.mad43.moviesapp.presentation.common.ProgressBar
-import com.mad43.moviesapp.presentation.common.RatingBarWithCount
-import com.mad43.moviesapp.presentation.common.RegularText
-import com.mad43.moviesapp.presentation.common.VerticalSpacer
+import com.mad43.moviesapp.common.components.ClickableImage
+import com.mad43.moviesapp.common.components.HorizontalSpacer
+import com.mad43.moviesapp.common.components.MovieAsyncImage
+import com.mad43.moviesapp.common.components.MultiLineText
+import com.mad43.moviesapp.common.components.ProgressBar
+import com.mad43.moviesapp.common.components.RatingBarWithCount
+import com.mad43.moviesapp.common.components.RegularText
+import com.mad43.moviesapp.common.components.VerticalSpacer
+import com.mad43.moviesapp.presentation.features.details.viewmodel.MovieDetailsViewModel
 
 @Composable
 fun MovieDetailsScreen(id: Int?, navController: NavController) {

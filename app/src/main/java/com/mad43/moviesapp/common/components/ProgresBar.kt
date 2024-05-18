@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.common
+package com.mad43.moviesapp.common.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.CircularProgressIndicator

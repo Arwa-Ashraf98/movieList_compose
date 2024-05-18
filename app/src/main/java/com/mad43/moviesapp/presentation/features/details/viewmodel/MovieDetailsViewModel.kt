@@ -1,11 +1,10 @@
-package com.mad43.moviesapp.presentation.features.details
+package com.mad43.moviesapp.presentation.features.details.viewmodel
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mad43.moviesapp.R
 import com.mad43.moviesapp.domain.ResourceResult
 import com.mad43.moviesapp.domain.interactors.GetMovieDetailsUseCase
+import com.mad43.moviesapp.presentation.features.details.ui.MovieDetailsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

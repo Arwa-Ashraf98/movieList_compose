@@ -1,3 +1,5 @@
+package com.mad43.moviesapp.common.components
+
 import android.graphics.Bitmap
 
 import androidx.compose.runtime.Composable

@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.mad43.moviesapp.data.source.local.MoviesDao
 import com.mad43.moviesapp.data.source.local.MoviesDataBase
 import com.mad43.moviesapp.data.source.local.MoviesRemoteKeysDao
-import com.mad43.moviesapp.utlis.Constants
+import com.mad43.moviesapp.common.utlis.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

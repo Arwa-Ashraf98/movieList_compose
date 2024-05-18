@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.utlis
+package com.mad43.moviesapp.common.utlis
 
 import com.mad43.moviesapp.BuildConfig
 

@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation
+package com.mad43.moviesapp.app.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.mad43.moviesapp.presentation.features.details.MovieDetailsScreen
-import com.mad43.moviesapp.presentation.features.movies.DisplayedMovieScreen
+import com.mad43.moviesapp.presentation.features.details.ui.MovieDetailsScreen
+import com.mad43.moviesapp.presentation.features.movies.ui.DisplayedMovieScreen
 
 
 @Composable

@@ -1,4 +1,4 @@
-package com.mad43.moviesapp
+package com.mad43.moviesapp.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.mad43.moviesapp.presentation.Navigation
+import com.mad43.moviesapp.app.navigation.Navigation
 import com.mad43.moviesapp.ui.theme.MoviesAppTheme
-import com.mad43.moviesapp.utlis.NetworkChecker
+import com.mad43.moviesapp.common.utlis.NetworkChecker
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

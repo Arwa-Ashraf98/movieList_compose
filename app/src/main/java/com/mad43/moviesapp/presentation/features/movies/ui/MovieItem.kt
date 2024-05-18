@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.features.movies
+package com.mad43.moviesapp.presentation.features.movies.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,13 +39,13 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.mad43.moviesapp.R
-import com.mad43.moviesapp.presentation.common.MultiLineText
-import com.mad43.moviesapp.presentation.common.RatingBarWithCount
-import com.mad43.moviesapp.presentation.common.RegularText
-import com.mad43.moviesapp.presentation.common.VerticalSpacer
+import com.mad43.moviesapp.common.components.MultiLineText
+import com.mad43.moviesapp.common.components.RatingBarWithCount
+import com.mad43.moviesapp.common.components.RegularText
+import com.mad43.moviesapp.common.components.VerticalSpacer
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
-import com.mad43.moviesapp.utlis.Constants
-import getAverageColor
+import com.mad43.moviesapp.common.utlis.Constants
+import com.mad43.moviesapp.common.components.getAverageColor
 
 
 @Composable

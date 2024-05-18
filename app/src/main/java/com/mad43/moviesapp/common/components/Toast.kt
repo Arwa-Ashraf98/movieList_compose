@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.common
+package com.mad43.moviesapp.common.components
 
 import android.content.Context
 import android.widget.Toast
