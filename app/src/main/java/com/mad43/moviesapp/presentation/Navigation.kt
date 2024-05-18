@@ -12,11 +12,11 @@ import com.mad43.moviesapp.presentation.features.movies.DisplayedMovieScreen
 
 
 @Composable
-fun Navigation() {
+fun Navigation(isNetworkConnected : Boolean) {
     val navController: NavHostController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.MovieMainScreen.route) {
         composable(route = Screen.MovieMainScreen.route) {
-            DisplayedMovieScreen(navController = navController)
+            DisplayedMovieScreen(navController = navController , isNetworkConnected = isNetworkConnected)
         }
 
         composable(

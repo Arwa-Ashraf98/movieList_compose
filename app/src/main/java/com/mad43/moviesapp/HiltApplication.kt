@@ -5,6 +5,8 @@ import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
+import com.mad43.moviesapp.utlis.NetworkChecker
+import com.mad43.moviesapp.utlis.NetworkConnectivityObserver
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -25,5 +27,11 @@ class HiltApplication : Application(), ImageLoaderFactory {
                     .build()
             }
             .build()
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        NetworkConnectivityObserver.initNetworkConnectivityObserver(this)
+        NetworkChecker().initNetworkChecker(this)
     }
 }

@@ -1,6 +1,5 @@
 package com.mad43.moviesapp.presentation.features.movies
 
-import GetAverageColor
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -46,6 +45,7 @@ import com.mad43.moviesapp.presentation.common.RegularText
 import com.mad43.moviesapp.presentation.common.VerticalSpacer
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
 import com.mad43.moviesapp.utlis.Constants
+import getAverageColor
 
 
 @Composable
@@ -99,7 +99,7 @@ fun MovieItem(movie: DisplayedMovie, action: (id: Int) -> Unit) {
         }
 
         if (imageState is AsyncImagePainter.State.Success) {
-            dominantColor = GetAverageColor(
+            dominantColor = getAverageColor(
                 imageBitmap = imageState.result.drawable.toBitmap().asImageBitmap()
             )
 

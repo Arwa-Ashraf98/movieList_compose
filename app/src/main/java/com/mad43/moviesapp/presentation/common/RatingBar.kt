@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.utlis
+package com.mad43.moviesapp.presentation.common
 
 
 import androidx.compose.foundation.layout.Row

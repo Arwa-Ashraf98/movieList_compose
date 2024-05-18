@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.core.graphics.ColorUtils
 
 @Composable
-fun GetAverageColor(imageBitmap: ImageBitmap): Color {
+fun getAverageColor(imageBitmap: ImageBitmap): Color {
     var averageColor by remember { mutableStateOf(Color.Transparent) }
 
     LaunchedEffect(Unit) {
