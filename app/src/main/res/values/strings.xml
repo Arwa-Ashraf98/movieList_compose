@@ -11,4 +11,7 @@
     <string name="en">en</string>
     <string name="error_connect_to_network">Error: Connect to Network</string>
     <string name="error">"Error: "</string>
+    <string name="no_internet">No Internet</string>
+    <string name="network_is_unavailable">Network is UnAvailable</string>
+    <string name="network_is_lost">Network is Lost</string>
 </resources>
