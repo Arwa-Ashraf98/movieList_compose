@@ -1,4 +1,4 @@
-package com.mad43.moviesapp.presentation.viewmodel
+package com.mad43.moviesapp.presentation.features.movies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

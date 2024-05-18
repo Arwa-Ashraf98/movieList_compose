@@ -4,4 +4,9 @@
     <string name="popular">Popular</string>
     <string name="known">Known</string>
     <string name="very_popular">very Popular</string>
+    <string name="lang">language</string>
+    <string name="release_date">releaseDate</string>
+    <string name="votes">votes</string>
+    <string name="overview">overView\n</string>
+    <string name="en">en</string>
 </resources>

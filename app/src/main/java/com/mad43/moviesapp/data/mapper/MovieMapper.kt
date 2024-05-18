@@ -37,7 +37,7 @@ fun MovieResponse.toDetailedMovie() : DetailedMovie {
         overView = this.overview ,
         imageUrl = this.poster_path ,
         releaseDate = this.release_date ,
-        voteCount = this.vote_average ,
-        genre = this.genres.joinToString(", ")
+        voteAverage = this.vote_average ,
+        genre = this.genres.joinToString(" - ") { it.name }
     )
 }

@@ -22,7 +22,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.mad43.moviesapp.presentation.Screen
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
-import com.mad43.moviesapp.presentation.viewmodel.MoviesViewModel
 
 @Composable
 fun DisplayedMovieScreen(navController: NavController) {
