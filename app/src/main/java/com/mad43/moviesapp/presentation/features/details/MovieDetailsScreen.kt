@@ -31,12 +31,12 @@ import com.mad43.moviesapp.presentation.common.HorizontalSpacer
 import com.mad43.moviesapp.presentation.common.MovieAsyncImage
 import com.mad43.moviesapp.presentation.common.MultiLineText
 import com.mad43.moviesapp.presentation.common.ProgressBar
+import com.mad43.moviesapp.presentation.common.RatingBarWithCount
 import com.mad43.moviesapp.presentation.common.RegularText
 import com.mad43.moviesapp.presentation.common.VerticalSpacer
-import com.mad43.moviesapp.utlis.RatingBar
 
 @Composable
-fun MovieDetailsScreen(id: Int? ,navController: NavController) {
+fun MovieDetailsScreen(id: Int?, navController: NavController) {
     val detailsViewModel = hiltViewModel<MovieDetailsViewModel>()
     val detailsState = detailsViewModel.detailsState.collectAsState().value
 
@@ -63,8 +63,8 @@ fun MovieDetailsScreen(id: Int? ,navController: NavController) {
                 imageDrawable = R.drawable.baseline_arrow_back_24,
                 modifier = Modifier
                     .padding(vertical = 16.dp, horizontal = 8.dp)
-                    .height(30.dp)
-                    .width(30.dp)
+                    .height(25.dp)
+                    .width(25.dp)
             ) {
                 navController.popBackStack()
             }
@@ -72,7 +72,7 @@ fun MovieDetailsScreen(id: Int? ,navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(170.dp),
-                imageUrl = detailsState.movie?.imageUrl ?: ""
+                imageUrl = detailsState.movie?.backImageUrl ?: ""
             )
 
             VerticalSpacer(size = 8)
@@ -85,7 +85,7 @@ fun MovieDetailsScreen(id: Int? ,navController: NavController) {
                     imageUrl = detailsState.movie?.imageUrl ?: "",
                     modifier = Modifier
                         .width(120.dp)
-                        .fillMaxHeight()
+                        .height(150.dp)
                         .clip(RoundedCornerShape(12.dp))
                         .background(MaterialTheme.colorScheme.primaryContainer)
                 )
@@ -101,24 +101,14 @@ fun MovieDetailsScreen(id: Int? ,navController: NavController) {
                         modifier = Modifier.padding(8.dp),
                         fontSize = 16.sp
                     )
-                    Row(modifier = Modifier.padding(4.dp)) {
-                        RatingBar(
-                            starsModifier = Modifier.padding(4.dp),
-                            rating = (detailsState.movie?.voteAverage ?: 0.0) / 2
-                        )
-                        RegularText(
-                            text = (detailsState.movie?.voteAverage ?: 0.0).toString().take(3),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Normal,
-                            color = Color.Gray,
-                            modifier = Modifier.padding(start = 4.dp)
-                        )
-                    }
+                    RatingBarWithCount(vote = detailsState.movie?.voteAverage?: 0.0 , modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, bottom = 12.dp, top = 4.dp))
                     VerticalSpacer(size = 8)
                     RegularText(
                         fontWeight = FontWeight.Normal,
                         text = stringResource(id = R.string.lang).plus(": ")
-                            .plus(stringResource(R.string.en)),
+                            .plus(detailsState.movie?.language),
                         modifier = Modifier.padding(start = 6.dp),
                         fontSize = 14.sp
                     )
@@ -126,7 +116,7 @@ fun MovieDetailsScreen(id: Int? ,navController: NavController) {
                     RegularText(
                         modifier = Modifier.padding(start = 6.dp),
                         fontWeight = FontWeight.Normal,
-                        text = stringResource(R.string.release_date).plus(" :")
+                        text = stringResource(R.string.release_date).plus(": ")
                             .plus(detailsState.movie?.releaseDate),
                         fontSize = 14.sp
                     )

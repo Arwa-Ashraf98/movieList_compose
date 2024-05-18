@@ -32,7 +32,7 @@ android {
         // Define buildConfigFields using values from local.properties
         buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
         buildConfigField("String", "BASE_URL", "\"${properties.getProperty("BASE_URL")}\"")
-        buildConfigField("String", "IMAGE_BASE_URL", "\"${properties.getProperty("IMAGE_BASE_URL")}\"")
+        buildConfigField("String", "BASE_IMAGE_URL", "\"${properties.getProperty("BASE_IMAGE_URL")}\"")
     }
 
     buildTypes {

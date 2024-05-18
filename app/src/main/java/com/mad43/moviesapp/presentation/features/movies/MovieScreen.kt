@@ -1,7 +1,6 @@
 package com.mad43.moviesapp.presentation.features.movies
 
 import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -43,7 +42,11 @@ fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>, navController: NavContr
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 16.dp, horizontal = 8.dp)
+    ) {
         if (movies.loadState.refresh is LoadState.Loading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
@@ -53,15 +56,13 @@ fun MovieScreen(movies: LazyPagingItems<DisplayedMovie>, navController: NavContr
                 items(movies) { displayedMovie ->
                     MovieItem(
                         movie = displayedMovie ?: DisplayedMovie(),
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .clickable {
-                                navController.navigate(
-                                    Screen.MovieDetailsScreen.withArgs(
-                                        displayedMovie?.movieId.toString()
-                                    )
+                        action = {
+                            navController.navigate(
+                                Screen.MovieDetailsScreen.withArgs(
+                                    displayedMovie?.movieId.toString()
                                 )
-                            })
+                            )
+                        })
                 }
             }
         }

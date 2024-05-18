@@ -38,6 +38,8 @@ fun MovieResponse.toDetailedMovie() : DetailedMovie {
         imageUrl = this.poster_path ,
         releaseDate = this.release_date ,
         voteAverage = this.vote_average ,
-        genre = this.genres.joinToString(" - ") { it.name }
+        genre = this.genres.joinToString(" - ") { it.name } ,
+        backImageUrl = this.backdrop_path ,
+        language = this.original_language
     )
 }
