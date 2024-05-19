@@ -21,6 +21,5 @@ class MainCoroutineRule(private val dispatcher : TestCoroutineDispatcher = TestC
     override fun finished(description: Description) {
         super.finished(description)
         Dispatchers.resetMain()
-        dispatcher.cleanupTestCoroutines()
     }
 }

@@ -1,9 +1,9 @@
-package com.mad43.moviesapp
+package com.mad43.moviesapp.presetation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingData
 import androidx.paging.map
-import androidx.test.filters.SmallTest
+import androidx.test.runner.AndroidJUnit4
 import com.mad43.moviesapp.domain.interactors.GetMoviesUseCase
 import com.mad43.moviesapp.domain.models.Movie
 import com.mad43.moviesapp.domain.repo.IMoviesRepo
@@ -22,11 +22,11 @@ import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
-import org.mockito.junit.MockitoJUnitRunner
+import org.robolectric.annotation.Config
 
 @ExperimentalCoroutinesApi
-@SmallTest
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(AndroidJUnit4::class)
+@Config(manifest=Config.NONE)
 class MoviesViewModelTest {
 
     @get:Rule
@@ -35,12 +35,9 @@ class MoviesViewModelTest {
     @Mock
     private lateinit var moviesRepo: IMoviesRepo
 
-    private  var getMoviesUseCase: GetMoviesUseCase ?= null
 
+    private lateinit var getMoviesUseCase: GetMoviesUseCase
 
-    @get:Rule
-    @ExperimentalCoroutinesApi
-    val main = MainCoroutineRule()
 
     private val testDispatcher = StandardTestDispatcher()
 
@@ -51,7 +48,7 @@ class MoviesViewModelTest {
     fun setup() {
         MockitoAnnotations.openMocks(this)
         getMoviesUseCase = GetMoviesUseCase(moviesRepo)
-        moviesViewModel = MoviesViewModel(getMoviesUseCase ?: GetMoviesUseCase(moviesRepo), testDispatcher)
+        moviesViewModel = MoviesViewModel(getMoviesUseCase, testDispatcher)
     }
 
     @Test
@@ -66,7 +63,7 @@ class MoviesViewModelTest {
             posterImage = "/path/to/poster.jpg"
         )
         val pagingData = PagingData.from(listOf(movie))
-        `when`(getMoviesUseCase?.invoke()).thenReturn(flowOf(pagingData))
+        `when`(getMoviesUseCase.invoke()).thenReturn(flowOf(pagingData))
 
 
         // when
@@ -74,7 +71,7 @@ class MoviesViewModelTest {
         result.map {
             assert(it.title == "Test Movie")
         }
-        // Assert
+        // assert
         verify(getMoviesUseCase, times(1))?.invoke()
     }
 }

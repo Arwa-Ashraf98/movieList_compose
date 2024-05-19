@@ -1,4 +1,4 @@
-package com.mad43.moviesapp
+package com.mad43.moviesapp.domain.ineractors
 
 import androidx.paging.PagingData
 import com.mad43.moviesapp.domain.interactors.GetMoviesUseCase
@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -29,9 +28,6 @@ class GetMoviesUseCaseTest {
     private  var getMoviesUseCase: GetMoviesUseCase ?= null
 
 
-    @get:Rule
-    @ExperimentalCoroutinesApi
-    val main = MainCoroutineRule()
 
 
     @Before

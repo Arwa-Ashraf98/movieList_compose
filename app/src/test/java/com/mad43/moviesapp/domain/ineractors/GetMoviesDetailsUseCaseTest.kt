@@ -1,4 +1,4 @@
-package com.mad43.moviesapp
+package com.mad43.moviesapp.domain.ineractors
 
 import com.mad43.moviesapp.domain.ResourceResult
 import com.mad43.moviesapp.domain.interactors.GetMovieDetailsUseCase
@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -19,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class GetMoviesDetailsUseCaseTest {
+class GetMoviesDetailsUseCaseTest  {
 
     @Mock
     private lateinit var moviesRepo: IMoviesRepo
@@ -27,9 +26,6 @@ class GetMoviesDetailsUseCaseTest {
     private  var getMoviesDetailsUseCase: GetMovieDetailsUseCase?= null
 
 
-    @get:Rule
-    @ExperimentalCoroutinesApi
-    val main = MainCoroutineRule()
 
     @Before
     fun setup() {
