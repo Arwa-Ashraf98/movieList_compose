@@ -4,6 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 
@@ -15,6 +16,7 @@ fun RegularText(
     fontWeight: FontWeight = FontWeight.SemiBold,
     color: Color = Color.Black,
     fontSize: TextUnit ,
+    textStyle: TextStyle = TextStyle.Default
 ) {
     Text(
         text = text,
@@ -22,6 +24,7 @@ fun RegularText(
         fontWeight = fontWeight,
         fontSize = fontSize,
         modifier = modifier ,
-        maxLines = 1
+        maxLines = 1 ,
+        style = textStyle
     )
 }

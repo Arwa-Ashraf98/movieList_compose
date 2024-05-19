@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//                NetworkChecker().isOnlineFlow().collectAsState(initial = false)
             val networkStatus by NetworkConnectivityObserver.observeNetworkConnection()
                 .collectAsState(
                     initial = NetworkStatus.UNAVAILABLE

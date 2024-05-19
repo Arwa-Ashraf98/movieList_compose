@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,20 +18,16 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun TextWithBackGround(show: Boolean, text: String = "") {
     if (show) {
-        Box(
+        BoxWithCenterText(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp) // Adjust the height as needed
+                .height(60.dp)
                 .background(color = Color.Red),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = text,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 16.sp,
-                style = TextStyle(color = Color.White, fontFamily = FontFamily.SansSerif),
-            )
-        }
-
+            text = text,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16,
+            textColor = Color.White,
+            fontFamily = FontFamily.SansSerif
+        )
     }
 }
