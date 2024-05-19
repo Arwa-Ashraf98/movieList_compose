@@ -26,13 +26,17 @@ android {
             useSupportLibrary = true
         }
 
-        val properties  = Properties()
+        val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
 
         // Define buildConfigFields using values from local.properties
         buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
         buildConfigField("String", "BASE_URL", "\"${properties.getProperty("BASE_URL")}\"")
-        buildConfigField("String", "BASE_IMAGE_URL", "\"${properties.getProperty("BASE_IMAGE_URL")}\"")
+        buildConfigField(
+            "String",
+            "BASE_IMAGE_URL",
+            "\"${properties.getProperty("BASE_IMAGE_URL")}\""
+        )
     }
 
     buildTypes {
@@ -44,6 +48,15 @@ android {
             )
         }
     }
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
+    defaultConfig {
+        // Replace com.example.android.dagger with your class path.
+        testInstrumentationRunner = "com.example.android.dagger.CustomTestRunner"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -77,6 +90,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.runner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -92,6 +106,7 @@ dependencies {
     implementation(libs.hilt.navigation)
     kaptAndroidTest(libs.hilt.androidCompiler)
     androidTestImplementation(libs.hiltTesting)
+    testImplementation(libs.hiltTesting)
 
     // coil
     implementation(libs.coilCompose)
@@ -115,6 +130,11 @@ dependencies {
     // testing
     implementation(libs.kotlin.test)
     implementation(libs.jUnit.testing)
+    androidTestImplementation(libs.android.junit.test)
+    androidTestImplementation(libs.test.esprsso)
+    testImplementation(libs.roboelectic)
+    androidTestImplementation(libs.androidx.arch.test.imp)
+    testImplementation(libs.androidx.arch.test.imp)
 
     // coroutine core
     implementation(libs.coroutineCore)
@@ -136,9 +156,9 @@ dependencies {
     implementation(libs.exteendedIcon)
 
     // mockito
-    implementation(libs.coroutine.test)
-    implementation(libs.mokito.core)
-//    implementation(libs.mokito.inline)
-    implementation(libs.mokito.android.test.implementatiom)
+    testImplementation(libs.coroutine.test)
+    testImplementation(libs.mokito.core)
+    testImplementation(libs.mokito.inline)
+    testImplementation(libs.mokito.android.test.implementatiom)
 
 }
