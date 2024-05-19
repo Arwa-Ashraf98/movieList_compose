@@ -2,7 +2,6 @@ package com.mad43.moviesapp.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import com.mad43.moviesapp.R
 import com.mad43.moviesapp.app.navigation.Navigation
 import com.mad43.moviesapp.common.components.TextWithBackGround
-import com.mad43.moviesapp.common.utlis.NetworkChecker
 import com.mad43.moviesapp.common.utlis.NetworkConnectivityObserver
 import com.mad43.moviesapp.common.utlis.NetworkStatus
 import com.mad43.moviesapp.ui.theme.MoviesAppTheme
@@ -26,13 +24,14 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val isOnline = NetworkChecker().isOnline()
         enableEdgeToEdge()
         setContent {
+//                NetworkChecker().isOnlineFlow().collectAsState(initial = false)
             val networkStatus by NetworkConnectivityObserver.observeNetworkConnection()
                 .collectAsState(
                     initial = NetworkStatus.UNAVAILABLE
                 )
+            val isOnline = networkStatus.name == NetworkStatus.AVAILABLE.name
             MoviesAppTheme {
                 Box(
                     modifier = Modifier.fillMaxSize()
@@ -57,12 +56,11 @@ class MainActivity : ComponentActivity() {
 
                         else -> {
                             TextWithBackGround(
-                                show = false, text = ""
+                                show = false
                             )
                         }
                     }
                 }
-                Log.e("TAG", "onCreate: ${networkStatus.name}")
             }
         }
     }

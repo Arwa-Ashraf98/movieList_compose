@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun TextWithBackGround(show: Boolean, text: String) {
+fun TextWithBackGround(show: Boolean, text: String = "") {
     if (show) {
         Box(
             modifier = Modifier
