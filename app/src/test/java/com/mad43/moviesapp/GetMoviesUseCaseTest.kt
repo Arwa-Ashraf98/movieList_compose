@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -26,6 +27,12 @@ class GetMoviesUseCaseTest {
     private lateinit var moviesRepo: IMoviesRepo
 
     private  var getMoviesUseCase: GetMoviesUseCase ?= null
+
+
+    @get:Rule
+    @ExperimentalCoroutinesApi
+    val main = MainCoroutineRule()
+
 
     @Before
     fun setup() {
@@ -53,7 +60,7 @@ class GetMoviesUseCaseTest {
         )
         `when`(moviesRepo.getALlMovies()).thenReturn(flowOf(pagingData))
 
-        // Act
+        // when
         val result = getMoviesUseCase?.invoke()?.first()
 
         // Assert

@@ -52,10 +52,6 @@ android {
         enableTransformForLocalTests = true
     }
 
-    defaultConfig {
-        // Replace com.example.android.dagger with your class path.
-        testInstrumentationRunner = "com.example.android.dagger.CustomTestRunner"
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
