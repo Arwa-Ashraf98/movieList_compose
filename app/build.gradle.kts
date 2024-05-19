@@ -134,4 +134,11 @@ dependencies {
 
     // extended icon
     implementation(libs.exteendedIcon)
+
+    // mockito
+    implementation(libs.coroutine.test)
+    implementation(libs.mokito.core)
+//    implementation(libs.mokito.inline)
+    implementation(libs.mokito.android.test.implementatiom)
+
 }
