@@ -1,6 +1,5 @@
 package com.mad43.moviesapp.presentation.features.movies.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,7 +25,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,13 +37,14 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.mad43.moviesapp.R
+import com.mad43.moviesapp.common.components.MovieAsyncImage
 import com.mad43.moviesapp.common.components.MultiLineText
 import com.mad43.moviesapp.common.components.RatingBarWithCount
 import com.mad43.moviesapp.common.components.RegularText
 import com.mad43.moviesapp.common.components.VerticalSpacer
-import com.mad43.moviesapp.presentation.models.DisplayedMovie
-import com.mad43.moviesapp.common.utlis.Constants
 import com.mad43.moviesapp.common.components.getAverageColor
+import com.mad43.moviesapp.common.utlis.Constants
+import com.mad43.moviesapp.presentation.models.DisplayedMovie
 
 
 @Composable
@@ -103,15 +102,14 @@ fun MovieItem(movie: DisplayedMovie, action: (id: Int) -> Unit) {
                 imageBitmap = imageState.result.drawable.toBitmap().asImageBitmap()
             )
 
-            Image(
+            MovieAsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(6.dp)
                     .height(250.dp)
                     .clip(RoundedCornerShape(22.dp)),
-                painter = imageState.painter,
-                contentDescription = movie.title,
-                contentScale = ContentScale.FillBounds
+                crossFade = true,
+                imageUrl = movie.imageUrl ?: ""
             )
         }
 
