@@ -1,5 +1,7 @@
 package com.mad43.moviesapp.presentation.features.details.viewmodel
 
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mad43.moviesapp.domain.ResourceResult
@@ -18,14 +20,18 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
+    saveStateHandle : SavedStateHandle
 ) : ViewModel() {
 
 
     private var _detailsState = MutableStateFlow(MovieDetailsState())
     val detailsState = _detailsState.asStateFlow()
 
-
-    fun getMovie(movieId: Int) {
+    val movieId = checkNotNull(saveStateHandle["id"]) as Int
+    init {
+       getMovie(movieId = movieId)
+    }
+    private fun getMovie(movieId: Int) {
         viewModelScope.launch {
             _detailsState.update { it.copy(isLoading = true , error = null , movie = null) }
             getMovieDetailsUseCase(movieId = movieId)

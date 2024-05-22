@@ -25,7 +25,7 @@ import com.mad43.moviesapp.presentation.models.DisplayedMovie
 fun SuccessMainScreen(
     movies: LazyPagingItems<DisplayedMovie>,
     isNetworkConnected: Boolean,
-    navController: NavController,
+    navigation : (movieId : String) -> Unit,
     context: Context
 ) {
     Box(
@@ -50,11 +50,7 @@ fun SuccessMainScreen(
                 items(movies) { displayedMovie ->
                     MovieItem(movie = displayedMovie ?: DisplayedMovie(), action = { movieId ->
                         if (isNetworkConnected) {
-                            navController.navigate(
-                                Screen.MovieDetailsScreen.withArgs(
-                                    movieId.toString()
-                                )
-                            )
+                            navigation.invoke(movieId.toString())
                         } else {
                             showToast(
                                 context = context,

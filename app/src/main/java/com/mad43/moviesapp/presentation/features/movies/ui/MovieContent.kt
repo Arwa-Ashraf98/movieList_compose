@@ -17,6 +17,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.mad43.moviesapp.R
+import com.mad43.moviesapp.app.navigation.Screen
 import com.mad43.moviesapp.common.components.showToast
 import com.mad43.moviesapp.presentation.features.movies.viewmodel.MoviesViewModel
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
@@ -58,7 +59,11 @@ fun MovieContent(
         SuccessMainScreen(
             movies = movies,
             isNetworkConnected = isNetworkConnected,
-            navController = navController,
+            navigation = {
+                navController.navigate(
+                    Screen.MovieDetailsScreen.withArgs(it)
+                )
+            },
             context = context
         )
     }

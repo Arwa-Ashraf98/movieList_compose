@@ -37,14 +37,9 @@ import com.mad43.moviesapp.common.components.VerticalSpacer
 import com.mad43.moviesapp.presentation.features.details.viewmodel.MovieDetailsViewModel
 
 @Composable
-fun MovieDetailsScreen(id: Int?, navController: NavController) {
+fun MovieDetailsScreen(navController: NavController) {
     val detailsViewModel = hiltViewModel<MovieDetailsViewModel>()
     val detailsState = detailsViewModel.detailsState.collectAsState().value
-
-    DisposableEffect(Unit) {
-        detailsViewModel.getMovie(id ?: -1)
-        onDispose {}
-    }
 
     if (detailsState.isLoading) {
         ProgressBar(

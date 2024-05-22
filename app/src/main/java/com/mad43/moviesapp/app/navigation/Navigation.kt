@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import com.mad43.moviesapp.presentation.features.details.ui.MovieDetailsScreen
 import com.mad43.moviesapp.presentation.features.movies.ui.MovieScreen
 
+private const val ID = "id"
 
 @Composable
 fun Navigation(isNetworkConnected : Boolean) {
@@ -20,15 +21,15 @@ fun Navigation(isNetworkConnected : Boolean) {
         }
 
         composable(
-            route = Screen.MovieDetailsScreen.route + "/{id}",
+            route = Screen.MovieDetailsScreen.route + "/{$ID}",
             arguments = listOf(
-                navArgument("id") {
+                navArgument(ID) {
                     type = NavType.IntType
                     defaultValue = 0
                     nullable = false
                 })
-        ) { entry ->
-            MovieDetailsScreen(id = entry.arguments?.getInt("id"), navController = navController)
+        ) {
+            MovieDetailsScreen(navController = navController)
         }
     }
 }
