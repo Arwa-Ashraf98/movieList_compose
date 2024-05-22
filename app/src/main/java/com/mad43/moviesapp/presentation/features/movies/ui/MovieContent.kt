@@ -22,14 +22,14 @@ import com.mad43.moviesapp.presentation.features.movies.viewmodel.MoviesViewMode
 import com.mad43.moviesapp.presentation.models.DisplayedMovie
 
 @Composable
-fun DisplayedMovieScreen(navController: NavController, isNetworkConnected: Boolean) {
+fun MovieScreen(navController: NavController, isNetworkConnected: Boolean) {
     val moviesViewModel: MoviesViewModel = hiltViewModel()
     val movies = moviesViewModel.moviesPagingFlow.collectAsLazyPagingItems()
-    MovieScreen(movies = movies, navController, isNetworkConnected = isNetworkConnected)
+    MovieContent(movies = movies, navController, isNetworkConnected = isNetworkConnected)
 }
 
 @Composable
-fun MovieScreen(
+fun MovieContent(
     movies: LazyPagingItems<DisplayedMovie>,
     navController: NavController,
     isNetworkConnected: Boolean

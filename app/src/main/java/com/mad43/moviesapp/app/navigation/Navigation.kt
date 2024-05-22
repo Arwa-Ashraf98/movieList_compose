@@ -8,7 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.mad43.moviesapp.presentation.features.details.ui.MovieDetailsScreen
-import com.mad43.moviesapp.presentation.features.movies.ui.DisplayedMovieScreen
+import com.mad43.moviesapp.presentation.features.movies.ui.MovieScreen
 
 
 @Composable
@@ -16,7 +16,7 @@ fun Navigation(isNetworkConnected : Boolean) {
     val navController: NavHostController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.MovieMainScreen.route) {
         composable(route = Screen.MovieMainScreen.route) {
-            DisplayedMovieScreen(navController = navController , isNetworkConnected = isNetworkConnected)
+            MovieScreen(navController = navController , isNetworkConnected = isNetworkConnected)
         }
 
         composable(
