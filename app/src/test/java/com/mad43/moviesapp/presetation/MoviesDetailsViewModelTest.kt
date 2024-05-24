@@ -1,6 +1,7 @@
 package com.mad43.moviesapp.presetation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.SavedStateHandle
 import androidx.test.runner.AndroidJUnit4
 import com.mad43.moviesapp.domain.ResourceResult
 import com.mad43.moviesapp.domain.interactors.GetMovieDetailsUseCase
@@ -38,7 +39,7 @@ class MoviesDetailsViewModelTest {
     fun setUp()  {
         MockitoAnnotations.openMocks(this)
         movieDetailsViewModel =
-            MovieDetailsViewModel(getMovieDetailsUseCase)
+            MovieDetailsViewModel(getMovieDetailsUseCase , SavedStateHandle())
     }
 
 

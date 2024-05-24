@@ -37,14 +37,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Navigation(isNetworkConnected = isOnline)
                     when (networkStatus) {
-                        NetworkStatus.UNAVAILABLE -> {
-                            TextWithBackGround(
-                                show = true, text = stringResource(
-                                    id = R.string.network_is_unavailable
-                                )
-                            )
-                        }
-
                         NetworkStatus.LOST -> {
                             TextWithBackGround(
                                 show = true, text = stringResource(
