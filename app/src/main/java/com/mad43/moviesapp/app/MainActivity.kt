@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.mad43.moviesapp.R
 import com.mad43.moviesapp.app.navigation.Navigation
@@ -40,8 +41,8 @@ class MainActivity : ComponentActivity() {
                         NetworkStatus.LOST -> {
                             TextWithBackGround(
                                 show = true, text = stringResource(
-                                    id = R.string.network_is_lost
-                                )
+                                    id = R.string.network_is_lost,
+                                ), textColor = Color.White, backgroundColor = Color.Red
                             )
                         }
 
